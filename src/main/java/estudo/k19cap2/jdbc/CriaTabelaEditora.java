@@ -10,17 +10,8 @@ public class CriaTabelaEditora {
 
 	public static void main(String[] args) throws Exception{
 
-		// Leitura da senha do mysql
-		InputStream configFile = CriaTabelaEditora.class.getClassLoader().getResourceAsStream("config/config.properties");
-		Properties prop= new Properties();
-		prop.load(configFile);
-
-		// Variáveis de conexão do banco
-		String stringDeConexao = "jdbc:mysql://localhost:3306/livraria";
-		String usuario = "root";
-		String senha = prop.getProperty("mysql.password");
-
-		Connection conexao = DriverManager.getConnection(stringDeConexao, usuario, senha);
+		// Conexão com o banco
+		Connection conexao = ConnectionFactory.createConnection();
 
 		String sql =
 			"CREATE TABLE IF NOT EXISTS Editora (" +

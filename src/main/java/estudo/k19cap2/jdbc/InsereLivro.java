@@ -13,19 +13,8 @@ public class InsereLivro {
 
 	public static void main(String[] args) throws Exception {
 
-		// Leitura da senha do mysql
-		InputStream configFile = CriaTabelaEditora.class.getClassLoader().getResourceAsStream("config/config.properties");
-		Properties prop= new Properties();
-		prop.load(configFile);
-
-		// Variáveis de conexão do banco
-		String stringDeConexao = "jdbc:mysql://localhost:3306/livraria";
-		String usuario = "root";
-		String senha = prop.getProperty("mysql.password");
-
 		// Conexão com o banco
-		Connection conexao = DriverManager.getConnection(stringDeConexao, usuario, senha);
-
+		Connection conexao = ConnectionFactory.createConnection();
 
 		Scanner entrada = new Scanner(System.in);
 		Livro l = new Livro();
@@ -38,11 +27,12 @@ public class InsereLivro {
 		System.out.print("Digite o preço do livro: R$ ");
 		l.setPreco(entrada.nextDouble());
 
-		// Listagem dos nomes (e id's) das editoras
-		String sql = "SELECT * from Editora";
+		// Consulta dos atributos de todas as editoras cadastradas
+		String sql = "SELECT nome, id from Editora";
 		PreparedStatement comando = conexao.prepareStatement(sql);
 		ResultSet resultado = comando.executeQuery();
 
+		// Listagem dos nomes (e id's) das editoras
 		System.out.println("\nEditoras disponíveis:");
 		while(resultado.next()) {
 			System.out.println("\t"+resultado.getString("nome")+" ("+resultado.getLong("id")+")");
@@ -56,17 +46,14 @@ public class InsereLivro {
 		entrada.close();
 
 		// Inserção do livro
-		sql =
-		"INSERT INTO Livro (titulo, preco, editoraId) " +
-			"VALUES ('" +
-				l.getTitulo() +	"', '" +
-				l.getPreco() +	"', '" +
-				l.getEditoraId() +	"')";
+		sql = "INSERT INTO Livro (titulo, preco, editoraId) VALUES (?, ?, ?)";
 
-		// Execução da query e gravação das chaves retornadas pelo banco (id)
+		// Execução da query e gravação das informações
 		comando = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		comando.setString(1, l.getTitulo());
+		comando.setDouble(2, l.getPreco());
+		comando.setLong(3, l.getEditoraId());
 		comando.execute();
-		System.out.println("Editora inserida!");
 
 		// Recuperação dos valores retornados pelo comando anterior
 		ResultSet generatedKeys = comando.getGeneratedKeys();
@@ -76,6 +63,7 @@ public class InsereLivro {
 		// Encerramento das consultas e conexão ao banco
 		comando.close();
 		conexao.close();
+		System.out.println("Livro inserido!");
 	}
 
 }

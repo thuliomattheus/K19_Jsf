@@ -10,18 +10,8 @@ public class CriaDBLivraria {
 
 	public static void main(String[] args) throws Exception{
 
-		// Leitura da senha do mysql
-		InputStream configFile = CriaTabelaEditora.class.getClassLoader().getResourceAsStream("config/config.properties");
-		Properties prop= new Properties();
-		prop.load(configFile);
-
-		// Variáveis de conexão do banco
-		String stringDeConexao = "jdbc:mysql://localhost:3306";
-		String usuario = "root";
-		String senha = prop.getProperty("mysql.password");
-
 		// Conexão com o banco
-		Connection conexao = DriverManager.getConnection(stringDeConexao, usuario, senha);
+		Connection conexao = ConnectionFactory.createConnection();
 
 		// Remoção do banco caso já exista
 		String sql = "DROP DATABASE IF EXISTS livraria";
