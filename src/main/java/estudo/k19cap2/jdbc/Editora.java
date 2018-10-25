@@ -24,5 +24,4 @@ public class Editora {
 		this.email = email;
 	}
 
-	
 }

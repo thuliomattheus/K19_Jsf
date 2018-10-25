@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class InsereEditora {
+public class InsereLivro {
 
 	public static void main(String[] args) throws Exception {
 
@@ -26,33 +26,56 @@ public class InsereEditora {
 		// Conexão com o banco
 		Connection conexao = DriverManager.getConnection(stringDeConexao, usuario, senha);
 
+
 		Scanner entrada = new Scanner(System.in);
-		Editora e = new Editora();
+		Livro l = new Livro();
 
-		System.out.println("Digite o nome da editora: ");
-		e.setNome(entrada.nextLine());
+		// Nome do livro
+		System.out.println("Digite o nome do livro: ");
+		l.setTitulo(entrada.nextLine());
 
-		System.out.println("Digite o email da editora: ");
-		e.setEmail(entrada.nextLine());
+		// Preço do livro
+		System.out.print("Digite o preço do livro: R$ ");
+		l.setPreco(entrada.nextDouble());
 
+		// Listagem dos nomes (e id's) das editoras
+		String sql = "SELECT * from Editora";
+		PreparedStatement comando = conexao.prepareStatement(sql);
+		ResultSet resultado = comando.executeQuery();
+
+		System.out.println("\nEditoras disponíveis:");
+		while(resultado.next()) {
+			System.out.println("\t"+resultado.getString("nome")+" ("+resultado.getLong("id")+")");
+		}
+
+		// Editora do livro
+		System.out.println("\nDigite o id da editora: ");
+		l.setEditoraId(entrada.nextLong());
+
+		// Encerramento do scanner
 		entrada.close();
 
-
-		String sql =
-		"INSERT INTO Editora (nome, email) " +
-			"VALUES ('" + e.getNome() + "', '" + e.getEmail() + "')";
+		// Inserção do livro
+		sql =
+		"INSERT INTO Livro (titulo, preco, editoraId) " +
+			"VALUES ('" +
+				l.getTitulo() +	"', '" +
+				l.getPreco() +	"', '" +
+				l.getEditoraId() +	"')";
 
 		// Execução da query e gravação das chaves retornadas pelo banco (id)
-		PreparedStatement comando = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		comando = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		comando.execute();
 		System.out.println("Editora inserida!");
 
 		// Recuperação dos valores retornados pelo comando anterior
 		ResultSet generatedKeys = comando.getGeneratedKeys();
 		generatedKeys.next();
-		e.setId(generatedKeys.getLong(1));
+		l.setId(generatedKeys.getLong(1));
 
+		// Encerramento das consultas e conexão ao banco
 		comando.close();
 		conexao.close();
 	}
+
 }
