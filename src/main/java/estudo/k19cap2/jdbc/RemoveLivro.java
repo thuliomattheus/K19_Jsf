@@ -2,29 +2,29 @@ package estudo.k19cap2.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Scanner;
 
-public class CriaDBLivraria {
+public class RemoveLivro {
 
 	public static void main(String[] args) throws Exception{
-
 		// Conexão com o banco
 		Connection conexao = ConnectionFactory.createConnection();
 
-		// Remoção do banco caso já exista
-		String sql = "DROP DATABASE IF EXISTS livraria";
+		Scanner entrada = new Scanner(System.in);
+
+		System.out.println("Digite o id do livro que deseja remover:");
+		Long id = Long.parseLong(entrada.nextLine());
+
+		entrada.close();
+
+		String sql = "DELETE FROM Livro WHERE id = ?";
+
 		PreparedStatement comando = conexao.prepareStatement(sql);
+		comando.setLong(1, id);
 		comando.execute();
+
 		comando.close();
-
-		// Remoção do banco caso já exista
-		sql = "CREATE DATABASE livraria";
-		comando = conexao.prepareStatement(sql);
-		comando.execute();
-		comando.close();
-
-		System.out.println("Base de dados livraria criada...");
-
 		conexao.close();
+		System.out.println("Livro removido!");
 	}
-
 }

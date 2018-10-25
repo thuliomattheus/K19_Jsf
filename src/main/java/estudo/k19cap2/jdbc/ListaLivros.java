@@ -1,13 +1,10 @@
 package estudo.k19cap2.jdbc;
 
-import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class ListaLivros {
 	public static void main(String[] args) throws Exception {
@@ -33,6 +30,7 @@ public class ListaLivros {
 		}
 
 		System.out.println("Resultados encontrados: \n");
+		System.out.println("--------------------------------------------");
 		for(Livro l : livros) {
 			System.out.println("Id: " + l.getId());
 			System.out.println("Título: " + l.getTitulo());

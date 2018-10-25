@@ -1,13 +1,10 @@
 package estudo.k19cap2.jdbc;
 
-import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class ListaEditoras {
 
@@ -33,6 +30,7 @@ public class ListaEditoras {
 		}
 
 		System.out.println("Resultados encontrados: \n");
+		System.out.println("--------------------------------------------");
 		for(Editora e : editoras) {
 			System.out.println("Id: " + e.getId());
 			System.out.println("Nome: " + e.getNome());
