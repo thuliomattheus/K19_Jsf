@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-public class ListaLivrosComJpa {
+public class ListaClientesComJpa {
 
 	public static void main(String[] args) {
 
@@ -16,19 +16,18 @@ public class ListaLivrosComJpa {
 
 		EntityManager manager = factory.createEntityManager();
 
-		Query query = manager.createQuery("SELECT l FROM Livro l");
+		Query query = manager.createQuery("SELECT c FROM Cliente c");
 
 		@SuppressWarnings("unchecked")
-		List<Livro> livros = query.getResultList();
+		List<Cliente> clientes = query.getResultList();
 
-		System.out.println("Livros:");
+		System.out.println("Clientes:");
 
-		for(Livro l : livros) {
-			System.out.println("\t" + l.getTitulo() + " - " + l.getPreco());
+		for(Cliente c : clientes) {
+			System.out.println("\t" + c.getNome() + " - " + c.getEndereco().getCidade());
 		}
 
 		manager.close();
 		factory.close();
 	}
-
 }
