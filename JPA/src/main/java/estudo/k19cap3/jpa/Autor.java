@@ -3,19 +3,15 @@ package estudo.k19cap3.jpa;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
-public class Funcionario {
+public class Autor {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	private String nome;
-
-	@ManyToOne
-	private Departamento departamento;
 
 	public Long getId() {
 		return id;

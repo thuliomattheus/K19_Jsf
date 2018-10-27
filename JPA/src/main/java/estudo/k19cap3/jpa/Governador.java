@@ -3,6 +3,7 @@ package estudo.k19cap3.jpa;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Governador {
@@ -12,6 +13,9 @@ public class Governador {
 	private Long id;
 
 	private String nome;
+
+	@OneToOne(mappedBy="governador")
+	private Estado estado;
 
 	public Long getId() {
 		return id;

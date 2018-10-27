@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 public class AdicionaEstadoGovernador {
 
 	public static void main(String[] args) {
+
 		EntityManagerFactory factory =
 			Persistence.createEntityManagerFactory("livraria-pu");
 
@@ -35,9 +36,10 @@ public class AdicionaEstadoGovernador {
 
 		manager.getTransaction().commit();
 
-		System.out.println(
-			"O governador " + g.getNome() + " foi eleito em " + e.getNome()
-			);
+		// Buscando uma classe pelo seu id
+		Estado aux = manager.find(Estado.class, e.getId());
+
+		System.out.println("O governador " + aux.getGovernador().getNome() + " foi eleito em " + aux.getNome());
 
 		manager.close();
 		factory.close();

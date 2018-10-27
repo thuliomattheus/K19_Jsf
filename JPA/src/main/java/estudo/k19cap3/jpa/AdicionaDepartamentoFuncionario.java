@@ -38,7 +38,6 @@ public class AdicionaDepartamentoFuncionario {
 
 			// Adiciona o funcionário
 			manager.persist(f);
-
 		}
 
 		entrada.close();

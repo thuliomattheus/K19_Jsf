@@ -20,7 +20,7 @@ public class Departamento {
 //	@JoinTable(name="DEP_FUNC",
 //		joinColumns=@JoinColumn(name="DEP_ID"),
 //		inverseJoinColumns=@JoinColumn(name="FUNC_ID"))
-	@OneToMany
+	@OneToMany(mappedBy="departamento")
 	private Collection<Funcionario> funcionarios = new ArrayList<Funcionario>();
 
 	public Long getId() {
