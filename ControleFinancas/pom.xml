@@ -7,7 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>JPA</artifactId>
+  <artifactId>ControleFinancas</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -25,6 +25,5 @@
 		    <artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
 	</dependencies>
-
 
 </project>
