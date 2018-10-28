@@ -26,5 +26,6 @@ public class AdicionaRevista {
 
 		manager.close();
 		factory.close();
+		System.out.println("15 revistas foram adicionadas");
 	}
 }
