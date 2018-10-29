@@ -46,6 +46,21 @@ public class App {
 		principal.adicionarFilha(limpaDados);
 		principal.adicionarFilha(sair);
 
+
+		/* Relatórios */
+		TelaRelatorioConsolidado consolidado =
+			new TelaRelatorioConsolidado(relatorios);
+		TelaRelatorioMensal mensal =
+			new TelaRelatorioMensal(relatorios);
+		TelaRelatorioPersonalizado personalizado =
+			new TelaRelatorioPersonalizado(relatorios);
+
+		relatorios.adicionarFilha(consolidado);
+		relatorios.adicionarFilha(mensal);
+		relatorios.adicionarFilha(personalizado);
+		relatorios.adicionarFilha(principal);
+
+
 		/* Receitas */
 		TelaAdicionarReceita adicionarReceita =
 			new TelaAdicionarReceita(receitas);
@@ -55,6 +70,7 @@ public class App {
 		receitas.adicionarFilha(adicionarReceita);
 		receitas.adicionarFilha(consultarReceita);
 		receitas.adicionarFilha(principal);
+
 
 		/* Tipos de Consultas de Receitas */
 		TelaConsultarReceitasPorPeriodo consultarReceitasPorPeriodo =
@@ -66,15 +82,17 @@ public class App {
 		consultarReceita.adicionarFilha(consultarReceitasRecentes);
 		consultarReceita.adicionarFilha(receitas);
 
+
 		/* Despesas */
 		TelaAdicionarDespesa adicionarDespesa =
 			new TelaAdicionarDespesa(despesas);
 		TelaMenu consultarDespesa =
 			new TelaMenu("Consultar Despesas");
 
-		despesas.adicionarFilha(adicionarReceita);
-		despesas.adicionarFilha(consultarReceita);
+		despesas.adicionarFilha(adicionarDespesa);
+		despesas.adicionarFilha(consultarDespesa);
 		despesas.adicionarFilha(principal);
+
 
 		/* Tipos de Consultas de Despesas */
 		TelaConsultarDespesasPorPeriodo consultarDespesasPorPeriodo =
@@ -85,7 +103,6 @@ public class App {
 		consultarDespesa.adicionarFilha(consultarDespesasPorPeriodo);
 		consultarDespesa.adicionarFilha(consultarDespesasRecentes);
 		consultarDespesa.adicionarFilha(despesas);
-
 
 
 		App.factory = Persistence.createEntityManagerFactory("financas-pu");

@@ -30,10 +30,16 @@ public class TelaGeraDados implements Tela {
 		Calendar data2 = new GregorianCalendar(2014, 0, 20);
 		Calendar data3 = new GregorianCalendar(2014, 0, 1);
 
+		Receita[] r = new Receita[4];
+		Despesa[] d = new Despesa[4];
+
+		for (int i = 0; i < r.length; i++) {
+			r[i] = new Receita();
+			d[i] = new Despesa();
+		}
+
 		/* Receitas e Despesas*/
 		for(int i=0; i<36; i++) {
-			Receita r[] = new Receita[4];
-			Despesa d[] = new Despesa[4];
 
 			r[0].setNome("Salário K19");
 			r[0].setTipo("Salário");
@@ -66,11 +72,6 @@ public class TelaGeraDados implements Tela {
 			d[3].setNome("Cinema");
 			d[3].setTipo("Lazer");
 			d[3].setValor(200.0);
-
-			data0.add(Calendar.MONTH, i);
-			data1.add(Calendar.MONTH, i);
-			data2.add(Calendar.MONTH, i);
-			data3.add(Calendar.MONTH, i);
 
 			r[0].setData(data0);
 			r[1].setData(data1);

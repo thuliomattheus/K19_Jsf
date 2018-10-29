@@ -11,12 +11,12 @@ public class RepositorioDespesas extends RepositorioFinancas{
 		super(manager);
 	}
 
-	public double somaFinancasAte(Calendar data) {
+	public double somaDespesasAte(Calendar data) {
 
 		return super.somaFinancasAte(data, "Despesa");
 	}
 
-	public double somaFinancas(Calendar inicio, Calendar fim) {
+	public double somaDespesas(Calendar inicio, Calendar fim) {
 
 		return super.somaFinancas(inicio, fim, "Despesa");
 	}

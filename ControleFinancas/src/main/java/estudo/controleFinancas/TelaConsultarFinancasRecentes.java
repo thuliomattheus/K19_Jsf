@@ -1,60 +1,25 @@
 package estudo.controleFinancas;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 
-public class TelaConsultarFinancasPorPeriodo {
+public class TelaConsultarFinancasRecentes {
 
 	protected Tela anterior;
 
-	public TelaConsultarFinancasPorPeriodo(Tela anterior) {
+	public TelaConsultarFinancasRecentes(Tela anterior) {
 		this.anterior = anterior;
 	}
 
 	protected <R extends RepositorioFinancas, T extends TipoFinanca> Tela mostra(R repositoryType, T type) {
 
 		System.out.println(">>> " + this.getNome(type.getClass().getSimpleName()) + " <<<");
-
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-		Calendar dataInicial = null, dataFinal = null;
-
-		while(dataInicial == null) {
-			System.out.println("Digite a data inicial (ex: 01/10/2017): ");
-
-			try {
-				Date d = sdf.parse(App.getEntrada().next());
-				dataInicial = Calendar.getInstance();
-				dataInicial.setTime(d);
-			}
-			catch(ParseException e) {
-				System.out.println("Data incorreta");
-			}
-		}
-
-		while(dataFinal == null) {
-			System.out.println("Digite a data final (ex: 01/10/2017): ");
-
-			try {
-				Date d = sdf.parse(App.getEntrada().next());
-				dataFinal = Calendar.getInstance();
-				dataFinal.setTime(d);
-			}
-			catch(ParseException e) {
-				System.out.println("Data incorreta");
-			}
-		}
-
 		EntityManager manager = App.getEntityManager();
 
-		List<T> financas = (List<T>) repositoryType.buscaPorPeriodo(dataInicial, dataFinal, type.getClass());
+		List<T> financas = (List<T>) repositoryType.buscaRecentes(type.getClass());
 
 		int opcao = -1;
 
@@ -105,6 +70,6 @@ public class TelaConsultarFinancasPorPeriodo {
 	}
 
 	protected String getNome(String type) {
-		return (type + "s por Período");
+		return ("Últimas " + type + "s Adicionadas");
 	}
 }
