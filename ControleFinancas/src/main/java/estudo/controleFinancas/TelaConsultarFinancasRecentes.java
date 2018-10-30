@@ -14,7 +14,7 @@ public class TelaConsultarFinancasRecentes {
 		this.anterior = anterior;
 	}
 
-	protected <R extends RepositorioFinancas, T extends TipoFinanca> Tela mostra(R repositoryType, T type) {
+	protected <R extends RepositorioFinancas, T extends Financa> Tela mostra(R repositoryType, T type) {
 
 		System.out.println(">>> " + this.getNome(type.getClass().getSimpleName()) + " <<<");
 		EntityManager manager = App.getEntityManager();

@@ -43,12 +43,28 @@ public class TelaRelatorioConsolidado implements Tela {
 		RepositorioDespesas rd =
 			new RepositorioDespesas(manager);
 
-		double receitas = rr.somaReceitasAte(data);
-		double despesas = rd.somaDespesasAte(data);
+		double receitas, despesas;
+
+		// Verificando se existiu alguma receita no período informado
+		try {
+			receitas = rr.somaReceitasAte(data);
+		}
+		catch(NullPointerException e) {
+			receitas = 0;
+		}
+
+		// Verificando se existiu alguma despesa no período informado
+		try {
+			despesas = rd.somaDespesasAte(data);
+		}
+		catch(NullPointerException e) {
+			despesas = 0;
+		}
 
 		manager.close();
 
-		System.out.println("Saldo: " + (receitas - despesas) + "\n");
+		System.out.println("\nData limite : " + sdf.format(data.getTime()) + "\n");
+		System.out.println("Saldo : " + (receitas - despesas) + "\n");
 
 		return this.anterior;
 	}

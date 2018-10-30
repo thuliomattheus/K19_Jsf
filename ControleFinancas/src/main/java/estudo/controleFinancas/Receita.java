@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Receita extends TipoFinanca{
+public class Receita extends Financa{
 
 	@Id
 	@GeneratedValue

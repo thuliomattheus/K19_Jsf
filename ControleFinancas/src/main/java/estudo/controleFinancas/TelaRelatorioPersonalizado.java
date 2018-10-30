@@ -19,9 +19,9 @@ public class TelaRelatorioPersonalizado implements Tela {
 
 		System.out.println(">>> " + this.getNome() + " <<<\n");
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
 		Calendar dataInicial=null, dataFinal=null;
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		while(dataInicial==null) {
 			System.out.println("Digite a data inicial (ex: 05/08/2016): ");
@@ -54,14 +54,29 @@ public class TelaRelatorioPersonalizado implements Tela {
 		RepositorioReceitas rr = new RepositorioReceitas(manager);
 		RepositorioDespesas rd = new RepositorioDespesas(manager);
 
-		double receitas = rr.somaReceitas(dataInicial, dataFinal);
-		double despesas = rd.somaDespesas(dataInicial, dataFinal);
+		double receitas, despesas;
 
+		// Verificando se existiu alguma receita no período informado
+		try {
+			receitas = rr.somaReceitas(dataInicial, dataFinal);
+		}
+		catch(NullPointerException e) {
+			receitas = 0;
+		}
+
+		// Verificando se existiu alguma despesa no período informado
+		try {
+			despesas = rd.somaDespesas(dataInicial, dataFinal);
+		}
+		catch(NullPointerException e) {
+			despesas = 0;
+		}
 		manager.close();
 
-		System.out.println("Receitas: " + receitas);
-		System.out.println("Despesas: " + despesas);
-		System.out.println("Saldo do Período: " + (receitas-despesas) + "\n");
+		System.out.println("\nPeríodo : " + sdf.format(dataInicial.getTime()) + " - " + sdf.format(dataFinal.getTime()));
+		System.out.println("Receitas : " + receitas);
+		System.out.println("Despesas : " + despesas);
+		System.out.println("Saldo do Período : " + (receitas-despesas) + "\n");
 
 		return this.anterior;
 	}

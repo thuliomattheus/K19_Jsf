@@ -19,7 +19,7 @@ public class TelaAdicionarFinanca {
 		this.anterior = anterior;
 	}
 
-	protected <T extends TipoFinanca> T mostra(T type) {
+	protected <T extends Financa> T mostra(T type) {
 		System.out.println(">>> " + type.getClass().getSimpleName() + " <<<\n");
 
 		System.out.println("Digite o nome: ");
@@ -100,6 +100,6 @@ public class TelaAdicionarFinanca {
 	}
 
 	protected String getNome(String type) {
-		return ("Adicionar" + type);
+		return ("Adicionar " + type);
 	}
 }

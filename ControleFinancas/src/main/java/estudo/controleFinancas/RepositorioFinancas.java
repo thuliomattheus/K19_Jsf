@@ -14,11 +14,11 @@ public class RepositorioFinancas {
 		this.manager = manager;
 	}
 
-	protected void adiciona(TipoFinanca financa) {
+	protected void adiciona(Financa financa) {
 		this.manager.persist(financa);
 	}
 
-	protected void remove(TipoFinanca financa) {
+	protected void remove(Financa financa) {
 		this.manager.remove(financa);
 	}
 
@@ -46,7 +46,7 @@ public class RepositorioFinancas {
 		return query.getSingleResult();
 	}
 
-	protected <T extends TipoFinanca> List<T> buscaPorPeriodo(Calendar inicio, Calendar fim, Class<T> type){
+	protected <T extends Financa> List<T> buscaPorPeriodo(Calendar inicio, Calendar fim, Class<T> type){
 
 		String jpql = "SELECT f FROM " + type.getSimpleName() + " f WHERE " +
 				" f.data >= :dataInicial AND f.data <= :dataFinal ORDER BY f.data";
@@ -59,7 +59,7 @@ public class RepositorioFinancas {
 		return (List<T>) query.getResultList();
 	}
 
-	protected <T extends TipoFinanca> List<T> buscaRecentes(Class<T> type){
+	protected <T extends Financa> List<T> buscaRecentes(Class<T> type){
 
 		String jpql = "SELECT f FROM " + type.getSimpleName() + " f ORDER BY f.id DESC";
 

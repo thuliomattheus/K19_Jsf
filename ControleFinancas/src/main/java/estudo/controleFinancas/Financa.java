@@ -6,7 +6,7 @@ import java.util.Calendar;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class TipoFinanca {
+public class Financa {
 
 	private String nome;
 
