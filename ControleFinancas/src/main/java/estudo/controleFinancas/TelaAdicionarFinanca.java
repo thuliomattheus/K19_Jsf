@@ -75,7 +75,7 @@ public class TelaAdicionarFinanca {
 
 		int tipo = -1;
 
-		while(tipo < -1 || tipo > 5) {
+		while(tipo < 1 || tipo > 5) {
 			System.out.println("Escolha o tipo (número de 1 a 5): ");
 
 			try {
@@ -86,7 +86,7 @@ public class TelaAdicionarFinanca {
 				continue;
 			}
 
-			if(tipo < -1 || tipo > 5) {
+			if(tipo < 1 || tipo > 5) {
 				System.out.println("Tipo incorreto");				
 			}
 		}

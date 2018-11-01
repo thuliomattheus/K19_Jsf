@@ -21,7 +21,7 @@ public class TelaAdicionarDespesa extends TelaAdicionarFinanca implements Tela {
 		manager.getTransaction().commit();
 		manager.close();
 
-		System.out.println("Despesa adicionada!");
+		System.out.println("\nDespesa adicionada!\n");
 
 		return this.anterior;
 	}

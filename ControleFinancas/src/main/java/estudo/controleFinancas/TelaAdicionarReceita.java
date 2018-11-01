@@ -21,12 +21,12 @@ public class TelaAdicionarReceita extends TelaAdicionarFinanca implements Tela {
 		manager.getTransaction().commit();
 		manager.close();
 
-		System.out.println("Receita adicionada!");
+		System.out.println("\nReceita adicionada!\n");
 
 		return this.anterior;
 	}
 
 	public String getNome() {
-		return super.getNome("Receita");
+		return super.getNome("Nova Receita");
 	}
 }

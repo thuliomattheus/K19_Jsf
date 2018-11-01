@@ -32,8 +32,6 @@ public class App {
 			new TelaMenu("Receitas");
 		TelaMenu despesas =
 			new TelaMenu("Despesas");
-		TelaGeraDados geraDados =
-			new TelaGeraDados(principal);
 		TelaLimpaDados limpaDados =
 			new TelaLimpaDados(principal);
 		TelaSair sair =
@@ -42,7 +40,6 @@ public class App {
 		principal.adicionarFilha(relatorios);
 		principal.adicionarFilha(receitas);
 		principal.adicionarFilha(despesas);
-		principal.adicionarFilha(geraDados);
 		principal.adicionarFilha(limpaDados);
 		principal.adicionarFilha(sair);
 
