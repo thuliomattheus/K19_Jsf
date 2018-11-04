@@ -9,13 +9,25 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>JDBC</artifactId>
+	<artifactId>MeuPrimeiroBean</artifactId>
+	<packaging>war</packaging>
 
 	<dependencies>
+
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
 		</dependency>
+
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

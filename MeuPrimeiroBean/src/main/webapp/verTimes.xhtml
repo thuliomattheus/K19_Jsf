@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Times da PL</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:selectOneMenu value="#{premierLeagueBean.nomeNovoTime}">
+			<f:selectItem itemLabel="Times disponíveis" noSelectionOption="true" />
+			<f:selectItems value="#{premierLeagueBean.times}" var="time"
+				itemValue="#{time.nome}" itemLabel="#{time.nome}"/>
+		</h:selectOneMenu>
+		<h:commandButton action="#{premierLeagueBean.telaPrincipal}" value="Adicionar Novo Time" />
+	</h:form>
+</h:body>
+
+</html>

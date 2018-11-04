@@ -8,9 +8,6 @@ import java.util.InputMismatchException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
-
-
 public class TelaAdicionarFinanca {
 
 	protected Tela anterior;
