@@ -5,14 +5,14 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-	<title>Premier League</title>
+	<title>Adicionar Jogador</title>
 </h:head>
 
 <h:body>
 	<h:form>
-		<h:outputLabel value="Adicionar Time: " />
-		<h:inputText value="#{premierLeagueBean.nomeNovoTime}" />
-		<h:commandButton action="#{premierLeagueBean.adicionarTime}" value="Confirmar" />
+		<h:inputText value="#{premierLeagueBean.nomeNovoJogador}" label="Nome: "/>
+		&#160;
+		<h:commandButton action="#{premierLeagueBean.adicionarJogador}" value="Adicionar" />
 	</h:form>
 </h:body>
 

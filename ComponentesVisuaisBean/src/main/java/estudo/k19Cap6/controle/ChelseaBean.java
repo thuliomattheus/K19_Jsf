@@ -1,14 +1,14 @@
-package estudo.k19Cap5.controle;
+package estudo.k19Cap6.controle;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 @Named
-@SessionScoped
+@ViewScoped
 public class ChelseaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;

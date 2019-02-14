@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="postgres-jdbc-1688b95f5d2-33608abdeaac4390" provider="postgresql" driver="postgres-jdbc" name="PostgreSQL - spring" save-password="false" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="5432" server="" database="spring" url="jdbc:postgresql://localhost:5432/spring" user="postgres" type="dev">
+			<property name="connectTimeout" value="20"/>
+			<property name="loginTimeout" value="20"/>
+			<provider-property name="@dbeaver-show-non-default-db@" value="true"/>
+			<provider-property name="@dbeaver-show-template-db@" value="false"/>
+		</connection>
+	</data-source>
+	<data-source id="postgres-jdbc-1688b9b2d6d-8f40d929281866d" provider="postgresql" driver="postgres-jdbc" name="PostgreSQL - postgres" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="5432" server="" database="postgres" url="jdbc:postgresql://localhost:5432/postgres" user="postgres" password="AQsJNCGi" type="dev">
+			<provider-property name="@dbeaver-show-non-default-db@" value="true"/>
+			<provider-property name="@dbeaver-show-template-db@" value="false"/>
+		</connection>
+	</data-source>
+	<data-source id="postgres-jdbc-1688b9bcff4-7384c8e7f28092f" provider="postgresql" driver="postgres-jdbc" name="PostgreSQL - postgres 2" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="5432" server="" database="postgres" url="jdbc:postgresql://localhost:5432/postgres" user="postgres" password="AQsJNCGi" type="dev">
+			<property name="connectTimeout" value="20"/>
+			<property name="loginTimeout" value="20"/>
+			<provider-property name="@dbeaver-show-non-default-db@" value="true"/>
+			<provider-property name="@dbeaver-show-template-db@" value="false"/>
+		</connection>
+	</data-source>
+	<data-source id="postgres-jdbc-1688b9f39a4-7237191b9572b9ec" provider="postgresql" driver="postgres-jdbc" name="PostgreSQL - spring 2" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="5432" server="" database="spring" url="jdbc:postgresql://localhost:5432/spring" user="postgres" password="AQsJNCGi" type="dev">
+			<provider-property name="@dbeaver-show-non-default-db@" value="true"/>
+			<provider-property name="@dbeaver-show-template-db@" value="false"/>
+		</connection>
+	</data-source>
+	<data-source id="postgres-jdbc-1688ba6a06d-59d3ad5d8bf52575" provider="postgresql" driver="postgres-jdbc" name="PostgreSQL - postgres 3" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="5432" server="" database="postgres" url="jdbc:postgresql://localhost:5432/postgres" user="postgres" password="AQsJNCGi" type="dev">
+			<provider-property name="@dbeaver-show-non-default-db@" value="true"/>
+			<provider-property name="@dbeaver-show-template-db@" value="false"/>
+		</connection>
+	</data-source>
+	<filters/>
+</data-sources>

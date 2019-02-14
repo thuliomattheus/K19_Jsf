@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Conversor Monetário</title>
+</h:head>
+
+<h:body>
+	<h:form>
+
+		<br/>
+		<h:outputLabel value="Valor: " />
+		<h:inputText value="#{conversorMonetarioBean.valor}" />
+
+		<br/><br/>
+		<h:outputLabel value="De: " for="de"/>
+		<h:selectOneMenu id="de" value="#{conversorMonetarioBean.de}">
+			<f:selectItems value="#{conversorMonetarioBean.taxas.keySet()}" 
+				var="moeda" itemLabel="#{moeda}" itemValue="#{moeda}"/>
+		</h:selectOneMenu>
+
+		<br/><br/>
+		<h:outputLabel value="Para: " for="para"/>
+		<h:selectOneMenu id="para" value="#{conversorMonetarioBean.para}">
+			<f:selectItems value="#{conversorMonetarioBean.taxas.keySet()}" 
+				var="moeda" itemLabel="#{moeda}" itemValue="#{moeda}"/>
+		</h:selectOneMenu>
+
+		<br/><br/>
+		<h:commandButton action="#{conversorMonetarioBean.converte()}" value="Converter" />
+	</h:form>
+
+	<br/><br/>
+	Resultado: #{conversorMonetarioBean.resultado}
+
+</h:body>
+
+</html>

@@ -1,6 +1,8 @@
-package estudo.k19Cap5.controle;
+package estudo.k19Cap6.modelo;
 
 public class Jogador {
+
+	private int id;
 
 	private String nome;
 
@@ -8,6 +10,22 @@ public class Jogador {
 
 	private String nacionalidade;
 
+	public Jogador() {
+	}
+
+	public Jogador(int id, String nome, String nacionalidade) {
+		this.id = id;
+		this.nome = nome;
+		this.nacionalidade = nacionalidade;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -31,5 +49,4 @@ public class Jogador {
 	public void setNacionalidade(String nacionalidade) {
 		this.nacionalidade = nacionalidade;
 	}
-
 }

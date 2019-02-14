@@ -12,7 +12,7 @@
 		<module>JDBC</module>
 		<module>JPA</module>
 		<module>ControleFinancas</module>
-		<module>MeuPrimeiroBean</module>
+		<module>ComponentesVisuaisBean</module>
 	</modules>
 
 	<properties>
@@ -22,19 +22,21 @@
 
 	<dependencyManagement>
 		<dependencies>
+
+			<!-- Dependência necessária para acesso direto ao driver do mysql -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>8.0.11</version>
 			</dependency>
 
+			<!-- Dependências necessárias para utilização de JPA com hibernate -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
 				<version>5.1.10.Final</version>
 				<scope>provided</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
@@ -42,17 +44,23 @@
 				<scope>provided</scope>
 			</dependency>
 
+			<!-- Dependências necessárias para criação de um projeto JSF -->
 			<dependency>
 				<groupId>javax.inject</groupId>
 				<artifactId>javax.inject</artifactId>
 				<version>1</version>
 				<scope>provided</scope>
 			</dependency>
-
 			<dependency>
-				<groupId>javax.annotation</groupId>
-				<artifactId>javax.annotation-api</artifactId>
-				<version>1.3</version>
+				<groupId>javax.faces</groupId>
+				<artifactId>javax.faces-api</artifactId>
+				<version>2.3</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
 				<scope>provided</scope>
 			</dependency>
 

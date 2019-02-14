@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Componentes JSF</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:outputLabel value="&#34; Label &#34;" />
+		<br/><br/>
+
+		<h:outputLabel value="Entrada do usuário : " />
+		<h:inputText value="Escreva" />
+		<br/><br/>
+
+		<h:outputLabel value="Entrada do usuário não-editável : " />
+		<h:inputText value="Não me editarás!" readonly="true"/>
+		<br/><br/>
+
+		<h:outputLabel value="Botão : " />
+		<h:button value="Me aperta"/>
+		<br/><br/>
+
+		<h:outputLabel value="Link : " />
+		<h:link value="Me aperta" />
+		<br/><br/>
+
+		<h:outputLabel value="Radio : " />
+		<h:selectOneRadio>
+			<f:selectItem itemLabel="Opção 1"/>
+			<f:selectItem itemLabel="Opção 2"/>
+			<f:selectItem itemLabel="Opção 3"/>
+		</h:selectOneRadio>
+		<br/>
+
+		<h:outputLabel value="Menu populado por lista : " />
+		<h:selectOneMenu value="#{componentesVisuaisBean.numeroEscolhido}">
+			<f:selectItem itemLabel="Escolha o número" noSelectionOption="true" />
+			<f:selectItems value="#{componentesVisuaisBean.listaNumeros}" />
+		</h:selectOneMenu>
+		&nbsp;&nbsp;&nbsp;
+		<h:outputLabel value="Número: #{componentesVisuaisBean.numeroEscolhido}" />
+		<br/><br/>
+
+		<h:outputLabel value="Menu populado por listas com tipos complexos : " />
+		<h:selectOneMenu value="#{componentesVisuaisBean.idTime}">
+			<f:selectItem itemLabel="Escolha o time" noSelectionOption="true" />
+			<f:selectItems value="#{componentesVisuaisBean.listaTimes}" 
+			var="time" itemValue="#{time.id}" itemLabel="#{time.nome}" />
+		</h:selectOneMenu>
+		&nbsp;&nbsp;&nbsp;
+
+		<h:selectOneMenu value="#{componentesVisuaisBean.idJogador}">
+			<f:selectItem itemLabel="Escolha o jogador" noSelectionOption="true" />
+			<f:selectItems value="#{componentesVisuaisBean.listaJogadores}" 
+			var="jogador" itemValue="#{jogador.id}" itemLabel="#{jogador.nome} - #{jogador.nacionalidade}" />
+		</h:selectOneMenu>
+		&nbsp;&nbsp;&nbsp;
+		<h:outputLabel value="Jogador: #{componentesVisuaisBean.mostraJogador()}" />
+		<br/><br/>
+
+		<h:commandButton value="Enviar Formulário"/>
+	</h:form>
+</h:body>
+
+</html>
